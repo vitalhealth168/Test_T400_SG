@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEPADINA® (thiotepa) Dose Preparation Guide</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Firebase SDK (necessary for Firestore) -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <style>
-        /* ========== ORIGINAL STYLES (exactly as before) ========== */
+        /* ========== ORIGINAL STYLES (exactly from deepseek_html_20260211_63bb8b_11feb26_OK.html) ========== */
         :root {
             --primary-blue: #e6f2ff;
             --primary-green: #e6ffe6;
@@ -39,7 +36,7 @@
             min-height: 100vh;
         }
         
-        /* Disclaimer Modal */
+        /* Disclaimer Modal (original) */
         #disclaimer-modal {
             position: fixed;
             top: 0;
@@ -154,21 +151,15 @@
             padding: 20px;
         }
         
+        /* Header (original, but we will add a logout button inside without breaking layout) */
         .header {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
             margin-bottom: 25px;
             background-color: var(--white);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px var(--shadow);
-        }
-        
-        .header-text {
-            flex: 1;
-            text-align: left;
+            position: relative; /* for logout button placement */
         }
         
         .header h1 {
@@ -181,26 +172,6 @@
             color: var(--accent-green);
             font-size: 16px;
             font-weight: 600;
-        }
-        
-        .logout-button {
-            background-color: #f0f0f0;
-            color: var(--text-dark);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 14px;
-            margin-left: 10px;
-        }
-        
-        .logout-button:hover {
-            background-color: #e0e0e0;
         }
         
         /* Input Section (original) */
@@ -393,6 +364,7 @@
             letter-spacing: 0.5px;
         }
         
+        /* Action Buttons (original) */
         .action-buttons {
             display: flex;
             justify-content: space-between;
@@ -484,74 +456,49 @@
             border-top: 1px solid #eee;
         }
         
+        /* Responsive (original) */
         @media (max-width: 768px) {
-            .header {
+            .header h1 {
+                font-size: 20px;
+            }
+            
+            .dose-input-container {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 10px;
             }
-            .header h1 { font-size: 20px; }
-            .dose-input-container { flex-direction: column; align-items: flex-start; }
-            .dose-input { min-width: 100%; }
-            .action-buttons { flex-direction: column; }
-            .action-button { min-width: 100%; }
-            .button-container { flex-direction: column; }
+            
+            .dose-input {
+                min-width: 100%;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .action-button {
+                min-width: 100%;
+            }
+            
+            .button-container {
+                flex-direction: column;
+            }
         }
         
         @media print {
-            #login-modal, #disclaimer-modal, .calculate-button, .action-buttons, .logout-button {
+            #disclaimer-modal, .calculate-button, .action-buttons {
                 display: none !important;
             }
-            .main-container { display: block !important; }
-            .results-section { display: block !important; }
+            
+            .main-container {
+                display: block !important;
+            }
+            
+            .results-section {
+                display: block !important;
+            }
         }
 
-        /* Test stats panel */
-        .test-stats {
-            background-color: var(--primary-green);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--accent-green);
-            font-size: 14px;
-            display: none;
-        }
-        .test-stats h4 {
-            color: var(--accent-blue);
-            margin-bottom: 10px;
-        }
-        .test-stats table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 10px;
-        }
-        .test-stats th, .test-stats td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        .test-stats th {
-            background-color: var(--accent-blue);
-            color: white;
-        }
-        .reset-button {
-            background-color: var(--warning-red);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        .reset-button:hover {
-            background-color: #cc0000;
-        }
-
+        /* ========== NEW STYLES FOR LOGIN AND ADD-ONS (do NOT alter original look) ========== */
         /* Login Modal */
         #login-modal {
             position: fixed;
@@ -639,13 +586,90 @@
             font-weight: 600;
             min-height: 24px;
         }
+        
+        /* Logout buttons placed inside header/footer without disturbing original layout */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-text {
+            flex: 1;
+            text-align: left;
+        }
+        .logout-button {
+            background-color: #f0f0f0;
+            color: var(--text-dark);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        .logout-button:hover {
+            background-color: #e0e0e0;
+        }
+        
+        /* Test stats panel (blends with original design) */
+        .test-stats {
+            background-color: var(--primary-green);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-green);
+            font-size: 14px;
+            display: none;
+        }
+        .test-stats h4 {
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+        }
+        .test-stats table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        .test-stats th, .test-stats td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .test-stats th {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+        .reset-button {
+            background-color: var(--warning-red);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .reset-button:hover {
+            background-color: #cc0000;
+        }
     </style>
 </head>
 <body>
-    <!-- LOGIN MODAL -->
+    <!-- NEW LOGIN MODAL (with added guide title) -->
     <div id="login-modal">
         <div class="login-content">
             <div class="login-header">
+                <!-- Added heading as requested -->
                 <h3 style="margin-bottom: 10px; color: white;">TEPADINA® (thiotepa) Dose Preparation Guide</h3>
                 <h2><i class="fas fa-lock"></i> HEALTHCARE PROFESSIONAL LOGIN</h2>
                 <p>Please enter your credentials</p>
@@ -711,14 +735,19 @@
                 <p>By proceeding, you signify your acceptance of all the terms in this disclaimer. If you have any questions or concerns, please contact us at medinfo@axxessbio.com.</p>
             </div>
             <div class="button-container">
-                <button class="disclaimer-button decline-button" id="decline-button"><i class="fas fa-times"></i> DECLINE/ EXIT</button>
-                <button class="disclaimer-button agree-button" id="agree-button"><i class="fas fa-check"></i> I AGREE</button>
+                <button class="disclaimer-button decline-button" id="decline-button">
+                    <i class="fas fa-times"></i> DECLINE/ EXIT
+                </button>
+                <button class="disclaimer-button agree-button" id="agree-button">
+                    <i class="fas fa-check"></i> I AGREE
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- MAIN CONTAINER (with logout buttons and stats panel) -->
+    <!-- MAIN CONTAINER (original with added logout buttons and stats) -->
     <div class="main-container" id="main-container">
+        <!-- Header: original title + new logout button (top) -->
         <div class="header">
             <div class="header-text">
                 <h1>TEPADINA® (thiotepa) Dose Preparation Guide</h1>
@@ -727,8 +756,9 @@
             <button class="logout-button" id="logout-button-top"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </div>
 
+        <!-- NEW: Test/management stats panel (hidden by default) -->
         <div class="test-stats" id="test-stats">
-            <h4><i class="fas fa-chart-bar"></i> Login Statistics (centralised via Firebase)</h4>
+            <h4><i class="fas fa-chart-bar"></i> Login Statistics (visible to test/mgmt)</h4>
             <table id="stats-table">
                 <thead><tr><th>User ID</th><th>Successful Logins</th><th>Last Login</th></tr></thead>
                 <tbody id="stats-body"></tbody>
@@ -736,7 +766,7 @@
             <button class="reset-button" id="reset-stats-btn"><i class="fas fa-redo-alt"></i> Reset Counter (save PDF before reset)</button>
         </div>
 
-        <!-- ORIGINAL INPUT SECTION -->
+        <!-- ORIGINAL INPUT SECTION (unchanged) -->
         <div class="input-section">
             <div class="input-group">
                 <label for="dose">TEPADINA® Dose (mg)</label>
@@ -770,7 +800,7 @@
             </button>
         </div>
 
-        <!-- ORIGINAL RESULTS SECTION -->
+        <!-- ORIGINAL RESULTS SECTION (unchanged) -->
         <div class="results-section" id="results-section">
             <div class="results-header">
                 <h3>Preparation Steps</h3>
@@ -785,7 +815,7 @@
             </div>
         </div>
 
-        <!-- ORIGINAL FOOTER + logout (bottom) -->
+        <!-- ORIGINAL FOOTER + new logout button (bottom) -->
         <div class="footer">
             <div style="display: flex; justify-content: flex-end; margin-bottom: 15px;">
                 <button class="logout-button" id="logout-button-bottom"><i class="fas fa-sign-out-alt"></i> Logout</button>
@@ -805,7 +835,7 @@
         </div>
     </div>
 
-    <!-- ========== ORIGINAL DOSE CALCULATION SCRIPT (unchanged, massive) ========== -->
+    <!-- ========== ORIGINAL JAVASCRIPT (exactly as provided, untouched) ========== -->
     <script>
         // --- ORIGINAL CODE STARTS HERE (exactly from deepseek_html_20260211_63bb8b_11feb26_OK.html) ---
         // DOM Elements
@@ -1522,8 +1552,7 @@
                 return { steps, stepCounter: stepCounter + 1 };
             }
             
-            // Handle each specific preparation type (long switch case, kept intact)
-            // For brevity, we include only a few cases; the full original has all.
+            // Handle each specific preparation type
             switch(preparationType) {
                 case 'BID_200':
                     const result1 = generateBID1MCB(dose, 0, stepCounter);
@@ -1533,7 +1562,121 @@
                     const result2 = generateBID1MCB(dose, 1, stepCounter);
                     stepsHTML = result2.steps;
                     break;
-                // ... all other cases (the original file includes them all)
+                case 'BID_250':
+                    const result3 = generateBID1MCB(dose, 1, stepCounter);
+                    stepsHTML = result3.steps;
+                    break;
+                case 'BID_250_300':
+                    const result4 = generateBID1MCB(dose, 2, stepCounter);
+                    stepsHTML = result4.steps;
+                    break;
+                case 'BID_300':
+                    const result5 = generateBID1MCB(dose, 2, stepCounter);
+                    stepsHTML = result5.steps;
+                    break;
+                case 'BID_300_350':
+                    const result6 = generateBID1MCB(dose, 3, stepCounter);
+                    stepsHTML = result6.steps;
+                    break;
+                case 'BID_350':
+                    const result7 = generateBID1MCB(dose, 3, stepCounter);
+                    stepsHTML = result7.steps;
+                    break;
+                case 'BID_350_400':
+                    const result8 = generateBID1MCB(dose, 4, stepCounter);
+                    stepsHTML = result8.steps;
+                    break;
+                case 'BID_400':
+                    const result9 = generateBID2MCB(dose, 0, stepCounter);
+                    stepsHTML = result9.steps;
+                    break;
+                case 'BID_400_450':
+                    const result10 = generateBID2MCB(dose, 1, stepCounter);
+                    stepsHTML = result10.steps;
+                    break;
+                case 'BID_450':
+                    const result11 = generateBID2MCB(dose, 1, stepCounter);
+                    stepsHTML = result11.steps;
+                    break;
+                case 'BID_450_500':
+                    const result12 = generateBID2MCB(dose, 2, stepCounter);
+                    stepsHTML = result12.steps;
+                    break;
+                case 'BID_500':
+                    const result13 = generateBID2MCB(dose, 2, stepCounter);
+                    stepsHTML = result13.steps;
+                    break;
+                case 'BID_500_550':
+                    const result14 = generateBID2MCB(dose, 3, stepCounter);
+                    stepsHTML = result14.steps;
+                    break;
+                case 'BID_550':
+                    const result15 = generateBID2MCB(dose, 3, stepCounter);
+                    stepsHTML = result15.steps;
+                    break;
+                case 'BID_550_600':
+                    const result16 = generateBID2MCB(dose, 3, stepCounter);
+                    stepsHTML = result16.steps;
+                    break;
+                case 'BID_600':
+                    const result17 = generateBID2MCB(dose, 4, stepCounter);
+                    stepsHTML = result17.steps;
+                    break;
+                case 'BID_600_650':
+                    const result18 = generateBID2MCB(dose, 5, stepCounter);
+                    stepsHTML = result18.steps;
+                    break;
+                case 'BID_650':
+                    const result19 = generateBID2MCB(dose, 5, stepCounter);
+                    stepsHTML = result19.steps;
+                    break;
+                case 'BID_650_700':
+                    const result20 = generateBID2MCB(dose, 6, stepCounter);
+                    stepsHTML = result20.steps;
+                    break;
+                case 'BID_700':
+                    const result21 = generateBID2MCB(dose, 6, stepCounter);
+                    stepsHTML = result21.steps;
+                    break;
+                case 'BID_700_750':
+                    const result22 = generateBID2MCB(dose, 7, stepCounter);
+                    stepsHTML = result22.steps;
+                    break;
+                case 'BID_750':
+                    const result23 = generateBID2MCB(dose, 7, stepCounter);
+                    stepsHTML = result23.steps;
+                    break;
+                case 'BID_750_800':
+                    const result24 = generateBID2MCB(dose, 8, stepCounter);
+                    stepsHTML = result24.steps;
+                    break;
+                case 'BID_800':
+                    stepsHTML = generateBID800Steps(stepCounter);
+                    break;
+                case 'BID_800_850':
+                    stepsHTML = generateBID800_850Steps(dose, stepCounter);
+                    break;
+                case 'BID_850':
+                    stepsHTML = generateBID850Steps(dose, stepCounter);
+                    break;
+                case 'BID_850_900':
+                    stepsHTML = generateBID850_900Steps(dose, stepCounter);
+                    break;
+                case 'BID_900':
+                    stepsHTML = generateBID900Steps(dose, stepCounter);
+                    break;
+                case 'BID_900_950':
+                    stepsHTML = generateBID900_950Steps(dose, stepCounter);
+                    break;
+                case 'BID_950':
+                    stepsHTML = generateBID950Steps(dose, stepCounter);
+                    break;
+                case 'BID_950_1000':
+                    stepsHTML = generateBID950_1000Steps(dose, stepCounter);
+                    break;
+                case 'BID_1000':
+                    stepsHTML = generateBID1000Steps(stepCounter);
+                    break;
                 default:
                     stepsHTML = `
                         <div class="step">
@@ -1606,14 +1749,357 @@
                 `;
             }
             
-            // ... many other helper functions (generateODHalfMCBMethod, generateODSeparateMCBs, etc.)
-            // For brevity, we include only the structure; the original file contains them.
-
+            // Helper function for OD with 1 MCB and half MCB method (for doses 200-400mg, except 350, 400)
+            function generateODHalfMCBMethod(dose, vialCountPerInfusion, stepCounter, isExact = false, exactVolume = 0) {
+                // Special case for 200mg - no vials needed
+                if (dose === 200) {
+                    return { steps: generateOD200SpecificSteps(stepCounter), stepCounter: stepCounter + 3 };
+                }
+                
+                let steps = '';
+                const volumeFromVial = isExact ? exactVolume : (dose - 200) / 10;
+                const totalVolume = 200 + volumeFromVial;
+                
+                // Step 1: Day 1 Preparation
+                steps += `
+                    <div class="step">
+                        <div class="step-title">
+                            <i class="fas fa-calendar-day" style="color: var(--accent-blue);"></i>
+                            <span>Step ${stepCounter}: Day 1 Preparation (First Infusion)</span>
+                        </div>
+                        <div class="step-content">
+                            <p>1. Remove MCB from refrigeration and activate <span class="emphasis">immediately</span>.</p>
+                            <p>2. Press firmly on the <span class="emphasis">centre</span> portion of the bag (the solvent chamber) to apply uniform pressure.</p>
+                            <p>3. Activate with <span class="emphasis">vigorous mixing</span>.</p>
+                            ${createCalculationBox('Activated MCB Calculations:', 400, 400, false)}
+                            <p><em>Upon activation, MCB is stable for 48 hours when stored at 2-8°C.</em></p>
+                            <p>4. Transfer 200ml (200mg) from the activated MCB to an empty <span class="emphasis">PVC-free</span> infusion bag.</p>
+                            <p>5. Reconstitute ${vialCountPerInfusion} × 100mg vial${vialCountPerInfusion > 1 ? 's' : ''} with ${10 * vialCountPerInfusion}ml of sterile water for injection.</p>
+                            ${createCalculationBox(`Reconstituted Vial${vialCountPerInfusion > 1 ? 's' : ''} Calculations:`, 100 * vialCountPerInfusion, 10 * vialCountPerInfusion, false)}
+                            <p>6. Transfer ${volumeFromVial.toFixed(1)}ml (${dose - 200}mg) from the reconstituted vial${vialCountPerInfusion > 1 ? 's' : ''} to the infusion bag.</p>
+                            ${createCalculationBox('First Infusion: PVC-free Infusion Bag Calculations:', dose, totalVolume.toFixed(1), true)}
+                            <div class="warning-box">
+                                <p><strong>Use immediately for Day 1 infusion. Mixed infusion bag with vial${vialCountPerInfusion > 1 ? 's' : ''} should not be stored.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                stepCounter++;
+                
+                // Step 2: Store remaining MCB for Day 2
+                steps += `
+                    <div class="step">
+                        <div class="step-title">
+                            <i class="fas fa-temperature-low" style="color: var(--accent-blue);"></i>
+                            <span>Step ${stepCounter}: Store Remaining MCB for Day 2</span>
+                        </div>
+                        <div class="step-content">
+                            <p>1. Store the remaining 200ml (200mg) in the activated MCB at 2-8°C for Day 2 preparation.</p>
+                            ${createCalculationBox('Stored MCB Calculations:', 200, 200, false)}
+                            <p><em>Upon activation, MCB is stable for 48 hours when stored at 2-8°C.</em></p>
+                        </div>
+                    </div>
+                `;
+                stepCounter++;
+                
+                // Step 3: Day 2 Preparation (24 hours later)
+                steps += `
+                    <div class="step">
+                        <div class="step-title">
+                            <i class="fas fa-calendar-day" style="color: var(--accent-green);"></i>
+                            <span>Step ${stepCounter}: Day 2 Preparation (Second Infusion - 24 hours later)</span>
+                        </div>
+                        <div class="step-content">
+                            <p>1. Retrieve the stored MCB from refrigeration.</p>
+                            <p>2. Reconstitute ${vialCountPerInfusion} × 100mg vial${vialCountPerInfusion > 1 ? 's' : ''} with ${10 * vialCountPerInfusion}ml of sterile water for injection.</p>
+                            ${createCalculationBox(`Reconstituted Vial${vialCountPerInfusion > 1 ? 's' : ''} Calculations:`, 100 * vialCountPerInfusion, 10 * vialCountPerInfusion, false)}
+                            <p>3. Transfer ${volumeFromVial.toFixed(1)}ml (${dose - 200}mg) from the reconstituted vial${vialCountPerInfusion > 1 ? 's' : ''} to the MCB.</p>
+                            ${createCalculationBox('Second Infusion: MCB no. 1 Calculations:', dose, totalVolume.toFixed(1), true)}
+                            <div class="warning-box">
+                                <p><strong>Use immediately for Day 2 infusion. Mixed MCB with vial${vialCountPerInfusion > 1 ? 's' : ''} is stable for 24 hours when stored at 2-8°C.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                return { steps, stepCounter: stepCounter + 1 };
+            }
+            
+            // Helper function for OD with separate MCBs for each day (for doses ≥350mg)
+            function generateODSeparateMCBs(dose, mcbsPerDay, vialsPerDay, stepCounter) {
+                let steps = '';
+                const mgFromVials = dose - (400 * mcbsPerDay);
+                const volumeFromVials = mgFromVials / 10;
+                const totalVolume = (400 * mcbsPerDay) + volumeFromVials;
+                
+                // Step 1: Day 1 Preparation
+                steps += `
+                    <div class="step">
+                        <div class="step-title">
+                            <i class="fas fa-calendar-day" style="color: var(--accent-blue);"></i>
+                            <span>Step ${stepCounter}: Day 1 Preparation (First Infusion)</span>
+                        </div>
+                        <div class="step-content">
+                            <p>1. Remove ${mcbsPerDay} MCB${mcbsPerDay > 1 ? 's' : ''} from refrigeration and activate <span class="emphasis">immediately</span>.</p>
+                            <p>2. Press firmly on the <span class="emphasis">centre</span> portion of each bag (the solvent chamber) to apply uniform pressure.</p>
+                            <p>3. Activate with <span class="emphasis">vigorous mixing</span>.</p>
+                            ${createCalculationBox(`Activated MCB${mcbsPerDay > 1 ? 's' : ''} Calculations:`, 400 * mcbsPerDay, 400 * mcbsPerDay, false)}
+                            <p><em>Upon activation, MCB is stable for 48 hours when stored at 2-8°C.</em></p>
+                `;
+                
+                if (vialsPerDay > 0) {
+                    steps += `
+                            <p>4. Reconstitute ${vialsPerDay} × 100mg vial${vialsPerDay > 1 ? 's' : ''} with ${10 * vialsPerDay}ml of sterile water for injection.</p>
+                            ${createCalculationBox(`Reconstituted Vial${vialsPerDay > 1 ? 's' : ''} Calculations:`, 100 * vialsPerDay, 10 * vialsPerDay, false)}
+                            <p>5. Transfer ${volumeFromVials.toFixed(1)}ml (${mgFromVials}mg) from the reconstituted vial${vialsPerDay > 1 ? 's' : ''} to ${mcbsPerDay > 1 ? 'one of the' : 'the'} activated MCB${mcbsPerDay > 1 ? 's' : ''}.</p>
+                    `;
+                }
+                
+                if (mcbsPerDay > 1) {
+                    steps += `
+                            <p>${vialsPerDay > 0 ? '6' : '4'}. Use the ${mcbsPerDay} MCB${mcbsPerDay > 1 ? 's' : ''} for Day 1 infusion:</p>
+                            ${createCalculationBox(`First Infusion: MCB no. 1 ${vialsPerDay > 0 ? '(MCB with vial)' : ''} Calculations:`, vialsPerDay > 0 ? (400 + mgFromVials) : 400, vialsPerDay > 0 ? (400 + volumeFromVials).toFixed(1) : 400, true)}
+                    `;
+                    for (let i = 2; i <= mcbsPerDay; i++) {
+                        steps += createCalculationBox(`First Infusion: MCB no. ${i} Calculations:`, 400, 400, true);
+                    }
+                } else {
+                    steps += `
+                            ${createCalculationBox('First Infusion: MCB no. 1 Calculations:', dose, totalVolume.toFixed(1), true)}
+                    `;
+                }
+                
+                steps += `
+                            <div class="warning-box">
+                                <p><strong>Use immediately for Day 1 infusion. ${vialsPerDay > 0 ? 'Mixed MCB with vial' + (vialsPerDay > 1 ? 's' : '') + ' is stable for 24 hours when stored at 2-8°C.' : ''}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                stepCounter++;
+                
+                // Step 2: Day 2 Preparation (24 hours later)
+                steps += `
+                    <div class="step">
+                        <div class="step-title">
+                            <i class="fas fa-calendar-day" style="color: var(--accent-green);"></i>
+                            <span>Step ${stepCounter}: Day 2 Preparation (Second Infusion - 24 hours later)</span>
+                        </div>
+                        <div class="step-content">
+                            <p>1. Remove another ${mcbsPerDay} MCB${mcbsPerDay > 1 ? 's' : ''} from refrigeration and activate <span class="emphasis">immediately</span>.</p>
+                            <p>2. Press firmly on the <span class="emphasis">centre</span> portion of each bag (the solvent chamber) to apply uniform pressure.</p>
+                            <p>3. Activate with <span class="emphasis">vigorous mixing</span>.</p>
+                            ${createCalculationBox(`Activated MCB${mcbsPerDay > 1 ? 's' : ''} Calculations:`, 400 * mcbsPerDay, 400 * mcbsPerDay, false)}
+                            <p><em>Upon activation, MCB is stable for 48 hours when stored at 2-8°C.</em></p>
+                `;
+                
+                if (vialsPerDay > 0) {
+                    steps += `
+                            <p>4. Reconstitute ${vialsPerDay} × 100mg vial${vialsPerDay > 1 ? 's' : ''} with ${10 * vialsPerDay}ml of sterile water for injection.</p>
+                            ${createCalculationBox(`Reconstituted Vial${vialsPerDay > 1 ? 's' : ''} Calculations:`, 100 * vialsPerDay, 10 * vialsPerDay, false)}
+                            <p>5. Transfer ${volumeFromVials.toFixed(1)}ml (${mgFromVials}mg) from the reconstituted vial${vialsPerDay > 1 ? 's' : ''} to ${mcbsPerDay > 1 ? 'one of the' : 'the'} activated MCB${mcbsPerDay > 1 ? 's' : ''}.</p>
+                    `;
+                }
+                
+                if (mcbsPerDay > 1) {
+                    steps += `
+                            <p>${vialsPerDay > 0 ? '6' : '4'}. Use the ${mcbsPerDay} MCB${mcbsPerDay > 1 ? 's' : ''} for Day 2 infusion:</p>
+                            ${createCalculationBox(`Second Infusion: MCB no. 1 ${vialsPerDay > 0 ? '(MCB with vial)' : ''} Calculations:`, vialsPerDay > 0 ? (400 + mgFromVials) : 400, vialsPerDay > 0 ? (400 + volumeFromVials).toFixed(1) : 400, true)}
+                    `;
+                    for (let i = 2; i <= mcbsPerDay; i++) {
+                        steps += createCalculationBox(`Second Infusion: MCB no. ${i} Calculations:`, 400, 400, true);
+                    }
+                } else {
+                    steps += `
+                            ${createCalculationBox('Second Infusion: MCB no. 1 Calculations:', dose, totalVolume.toFixed(1), true)}
+                    `;
+                }
+                
+                steps += `
+                            <div class="warning-box">
+                                <p><strong>Use immediately for Day 2 infusion. ${vialsPerDay > 0 ? 'Mixed MCB with vial' + (vialsPerDay > 1 ? 's' : '') + ' is stable for 24 hours when stored at 2-8°C.' : ''}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                return { steps, stepCounter: stepCounter + 1 };
+            }
+            
+            // UPDATED: Helper function for OD 350mg specific preparation (2 MCBs, 0 vials)
+            function generateOD350SpecificSteps(stepCounter) {
+                return `
+                    <div class="step">
+                        <div class="step-title">
+                            <i class="fas fa-calendar-day" style="color: var(--accent-blue);"></i>
+                            <span>Step ${stepCounter}: Day 1 Preparation (First Infusion)</span>
+                        </div>
+                        <div class="step-content">
+                            <p>1. Remove MCB no. 1 from refrigeration and activate <span class="emphasis">immediately</span>.</p>
+                            <p>2. Press firmly on the <span class="emphasis">centre</span> portion of the bag (the solvent chamber) to apply uniform pressure.</p>
+                            <p>3. Activate with <span class="emphasis">vigorous mixing</span>.</p>
+                            ${createCalculationBox('Activated MCB no. 1 Calculations:', 400, 400, false)}
+                            <p><em>Upon activation, MCB is stable for 48 hours when stored at 2-8°C.</em></p>
+                            <p>4. Remove 50ml (50mg) from activated MCB no. 1.</p>
+                            ${createCalculationBox('First Infusion: MCB no. 1 Calculations:', 350, 350, true)}
+                            <div class="warning-box">
+                                <p><strong>Use immediately for Day 1 infusion.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">
+                            <i class="fas fa-calendar-day" style="color: var(--accent-green);"></i>
+                            <span>Step ${stepCounter + 1}: Day 2 Preparation (Second Infusion - 24 hours later)</span>
+                        </div>
+                        <div class="step-content">
+                            <p>1. Remove MCB no. 2 from refrigeration and activate <span class="emphasis">immediately</span>.</p>
+                            <p>2. Press firmly on the <span class="emphasis">centre</span> portion of the bag (the solvent chamber) to apply uniform pressure.</p>
+                            <p>3. Activate with <span class="emphasis">vigorous mixing</span>.</p>
+                            ${createCalculationBox('Activated MCB no. 2 Calculations:', 400, 400, false)}
+                            <p><em>Upon activation, MCB is stable for 48 hours when stored at 2-8°C.</em></p>
+                            <p>4. Remove 50ml (50mg) from activated MCB no. 2.</p>
+                            ${createCalculationBox('Second Infusion: MCB no. 2 Calculations:', 350, 350, true)}
+                            <div class="warning-box">
+                                <p><strong>Use immediately for Day 2 infusion.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Handle each specific preparation type for OD
             switch(preparationType) {
                 case 'OD_200':
                     stepsHTML = generateOD200SpecificSteps(stepCounter);
                     break;
-                // ... all other cases
+                case 'OD_200_250':
+                    const result2 = generateODHalfMCBMethod(dose, 1, stepCounter);
+                    stepsHTML = result2.steps;
+                    break;
+                case 'OD_250':
+                    const result3 = generateODHalfMCBMethod(dose, 1, stepCounter, true, 5);
+                    stepsHTML = result3.steps;
+                    break;
+                case 'OD_250_300':
+                    const result4 = generateODHalfMCBMethod(dose, 1, stepCounter);
+                    stepsHTML = result4.steps;
+                    break;
+                case 'OD_300':
+                    const result5 = generateODHalfMCBMethod(dose, 1, stepCounter, true, 10);
+                    stepsHTML = result5.steps;
+                    break;
+                case 'OD_300_350':
+                    const result6 = generateODHalfMCBMethod(dose, 2, stepCounter);
+                    stepsHTML = result6.steps;
+                    break;
+                case 'OD_350':
+                    // CORRECTED: Use the specific 350mg OD preparation (2 MCBs, 0 vials)
+                    stepsHTML = generateOD350SpecificSteps(stepCounter);
+                    break;
+                case 'OD_350_400':
+                    const result8 = generateODHalfMCBMethod(dose, 2, stepCounter);
+                    stepsHTML = result8.steps;
+                    break;
+                case 'OD_400':
+                    const result9 = generateODSeparateMCBs(dose, 1, 0, stepCounter);
+                    stepsHTML = result9.steps;
+                    break;
+                case 'OD_400_450':
+                    const result10 = generateODSeparateMCBs(dose, 1, 1, stepCounter);
+                    stepsHTML = result10.steps;
+                    break;
+                case 'OD_450':
+                    const result11 = generateODSeparateMCBs(dose, 1, 1, stepCounter);
+                    stepsHTML = result11.steps;
+                    break;
+                case 'OD_450_500':
+                    const result12 = generateODSeparateMCBs(dose, 1, 1, stepCounter);
+                    stepsHTML = result12.steps;
+                    break;
+                case 'OD_500':
+                    const result13 = generateODSeparateMCBs(dose, 1, 1, stepCounter);
+                    stepsHTML = result13.steps;
+                    break;
+                case 'OD_500_550':
+                    const result14 = generateODSeparateMCBs(dose, 1, 2, stepCounter);
+                    stepsHTML = result14.steps;
+                    break;
+                case 'OD_550':
+                    const result15 = generateODSeparateMCBs(dose, 1, 2, stepCounter);
+                    stepsHTML = result15.steps;
+                    break;
+                case 'OD_550_600':
+                    const result16 = generateODSeparateMCBs(dose, 1, 2, stepCounter);
+                    stepsHTML = result16.steps;
+                    break;
+                case 'OD_600':
+                    const result17 = generateODSeparateMCBs(dose, 1, 2, stepCounter);
+                    stepsHTML = result17.steps;
+                    break;
+                case 'OD_600_650':
+                    const result18 = generateODSeparateMCBs(dose, 1, 3, stepCounter);
+                    stepsHTML = result18.steps;
+                    break;
+                case 'OD_650':
+                    const result19 = generateODSeparateMCBs(dose, 1, 3, stepCounter);
+                    stepsHTML = result19.steps;
+                    break;
+                case 'OD_650_700':
+                    const result20 = generateODSeparateMCBs(dose, 1, 3, stepCounter);
+                    stepsHTML = result20.steps;
+                    break;
+                case 'OD_700':
+                    const result21 = generateODSeparateMCBs(dose, 1, 3, stepCounter);
+                    stepsHTML = result21.steps;
+                    break;
+                case 'OD_700_750':
+                    const result22 = generateODSeparateMCBs(dose, 1, 4, stepCounter);
+                    stepsHTML = result22.steps;
+                    break;
+                case 'OD_750':
+                    const result23 = generateODSeparateMCBs(dose, 2, 0, stepCounter);
+                    stepsHTML = result23.steps;
+                    break;
+                case 'OD_750_800':
+                    const result24 = generateODSeparateMCBs(dose, 1, 4, stepCounter);
+                    stepsHTML = result24.steps;
+                    break;
+                case 'OD_800':
+                    const result25 = generateODSeparateMCBs(dose, 2, 0, stepCounter);
+                    stepsHTML = result25.steps;
+                    break;
+                case 'OD_800_850':
+                    const result26 = generateODSeparateMCBs(dose, 2, 1, stepCounter);
+                    stepsHTML = result26.steps;
+                    break;
+                case 'OD_850':
+                    const result27 = generateODSeparateMCBs(dose, 2, 1, stepCounter);
+                    stepsHTML = result27.steps;
+                    break;
+                case 'OD_850_900':
+                    const result28 = generateODSeparateMCBs(dose, 2, 1, stepCounter);
+                    stepsHTML = result28.steps;
+                    break;
+                case 'OD_900':
+                    const result29 = generateODSeparateMCBs(dose, 2, 1, stepCounter);
+                    stepsHTML = result29.steps;
+                    break;
+                case 'OD_900_950':
+                    const result30 = generateODSeparateMCBs(dose, 2, 2, stepCounter);
+                    stepsHTML = result30.steps;
+                    break;
+                case 'OD_950':
+                    const result31 = generateODSeparateMCBs(dose, 2, 2, stepCounter);
+                    stepsHTML = result31.steps;
+                    break;
+                case 'OD_950_1000':
+                    const result32 = generateODSeparateMCBs(dose, 2, 1, stepCounter);
+                    stepsHTML = result32.steps;
+                    break;
+                case 'OD_1000':
+                    stepsHTML = generateOD1000Steps(stepCounter);
+                    break;
                 default:
                     stepsHTML = `
                         <div class="step">
@@ -1634,7 +2120,7 @@
             return stepsHTML;
         }
 
-        // Function for exactly 1000mg OD for 2 days (original)
+        // Function for exactly 1000mg OD for 2 days
         function generateOD1000Steps(stepCounter) {
             return `
                 <div class="step">
@@ -1699,7 +2185,7 @@
             `;
         }
 
-        // Function for exactly 1000mg BID (original)
+        // Function for exactly 1000mg BID
         function generateBID1000Steps(stepCounter) {
             return `
                 <div class="step">
@@ -1761,7 +2247,7 @@
             `;
         }
 
-        // Function for exactly 800mg BID (original)
+        // Function for exactly 800mg BID
         function generateBID800Steps(stepCounter) {
             return `
                 <div class="step">
@@ -1799,7 +2285,59 @@
         function generateBID800_850Steps(dose, stepCounter) {
             const mgFromVials = dose - 800;
             const volumeFromVials = mgFromVials / 10;
-            return `...`; // original content
+            
+            return `
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-syringe" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter}: Activate MCBs and Prepare Vial</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Remove 4 MCBs from refrigeration and activate <span class="emphasis">immediately</span>.</p>
+                        <p>2. Press firmly on the <span class="emphasis">centre</span> portion of each bag (the solvent chamber) to apply uniform pressure.</p>
+                        <p>3. Activate with <span class="emphasis">vigorous mixing</span>.</p>
+                        ${createCalculationBox('Activated MCB no. 1 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 2 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 3 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 4 Calculations:', 400, 400, false)}
+                        <p><em>Upon activation, MCB is stable for 48 hours when stored at 2-8°C.</em></p>
+                        <p>4. Reconstitute 1 × 100mg vial with 10ml of sterile water for injection.</p>
+                        ${createCalculationBox('Reconstituted Vial Calculations:', 100, 10, false)}
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-cogs" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter + 1}: Prepare First Infusion</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Transfer ${volumeFromVials.toFixed(1)}ml (${mgFromVials}mg) from the reconstituted vial to activated MCB no. 1.</p>
+                        <p>2. Use MCB no. 1 (with added vial) together with MCB no. 2 for the first infusion.</p>
+                        ${createCalculationBox('First Infusion: MCB no. 1 (MCB with vial) Calculations:', (400 + mgFromVials), (400 + volumeFromVials).toFixed(1), true)}
+                        ${createCalculationBox('First Infusion: MCB no. 2 Calculations:', 400, 400, true)}
+                        <div class="warning-box">
+                            <p><strong>Total first infusion: ${(800 + mgFromVials)}mg (${dose}mg)</strong></p>
+                            <p><strong>Stability Note:</strong> Mixed MCB with vial is stable for 24 hours when stored at 2-8°C.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-temperature-low" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter + 2}: Prepare Second Infusion</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Transfer ${volumeFromVials.toFixed(1)}ml (${mgFromVials}mg) from the remaining reconstituted vial to activated MCB no. 3.</p>
+                        <p>2. Use MCB no. 3 (with added vial) together with MCB no. 4 for the second infusion.</p>
+                        <p>3. Store MCB no. 3 and MCB no. 4 at 2-8°C for the second infusion.</p>
+                        ${createCalculationBox('Second Infusion: MCB no. 3 (MCB with vial) Calculations:', (400 + mgFromVials), (400 + volumeFromVials).toFixed(1), true)}
+                        ${createCalculationBox('Second Infusion: MCB no. 4 Calculations:', 400, 400, true)}
+                        <div class="warning-box">
+                            <p><strong>Total second infusion: ${(800 + mgFromVials)}mg (${dose}mg)</strong></p>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
         function generateBID850Steps(dose, stepCounter) {
@@ -1809,29 +2347,285 @@
         function generateBID850_900Steps(dose, stepCounter) {
             const mgFromVials = dose - 800;
             const volumeFromVials = mgFromVials / 10;
-            return `...`; // original content
+            
+            return `
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-syringe" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter}: Activate MCBs and Prepare Vials</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Remove 4 MCBs from refrigeration and activate <span class="emphasis">immediately</span>.</p>
+                        <p>2. Press firmly on the <span class="emphasis">centre</span> portion of each bag (the solvent chamber) to apply uniform pressure.</p>
+                        <p>3. Activate with <span class="emphasis">vigorous mixing</span>.</p>
+                        ${createCalculationBox('Activated MCB no. 1 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 2 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 3 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 4 Calculations:', 400, 400, false)}
+                        <p><em>Upon activation, MCB is stable for 48 hours when stored at 2-8°C.</em></p>
+                        <p>4. Reconstitute 3 × 100mg vials with 30ml of sterile water for injection.</p>
+                        ${createCalculationBox('Reconstituted Vials Calculations:', 300, 30, false)}
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-cogs" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter + 1}: Prepare First Infusion</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Transfer ${volumeFromVials.toFixed(1)}ml (${mgFromVials}mg) from the reconstituted vials to activated MCB no. 1.</p>
+                        <p>2. Use MCB no. 1 (with added vial) together with MCB no. 2 for the first infusion.</p>
+                        ${createCalculationBox('First Infusion: MCB no. 1 (MCB with vial) Calculations:', (400 + mgFromVials), (400 + volumeFromVials).toFixed(1), true)}
+                        ${createCalculationBox('First Infusion: MCB no. 2 Calculations:', 400, 400, true)}
+                        <div class="warning-box">
+                            <p><strong>Total first infusion: ${(800 + mgFromVials)}mg (${dose}mg)</strong></p>
+                            <p><strong>Stability Note:</strong> Mixed MCB with vials is stable for 24 hours when stored at 2-8°C.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-temperature-low" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter + 2}: Prepare Second Infusion</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Transfer ${volumeFromVials.toFixed(1)}ml (${mgFromVials}mg) from the remaining reconstituted vials to activated MCB no. 3.</p>
+                        <p>2. Use MCB no. 3 (with added vial) together with MCB no. 4 for the second infusion.</p>
+                        <p>3. Store MCB no. 3 and MCB no. 4 at 2-8°C for the second infusion.</p>
+                        ${createCalculationBox('Second Infusion: MCB no. 3 (MCB with vial) Calculations:', (400 + mgFromVials), (400 + volumeFromVials).toFixed(1), true)}
+                        ${createCalculationBox('Second Infusion: MCB no. 4 Calculations:', 400, 400, true)}
+                        <div class="warning-box">
+                            <p><strong>Total second infusion: ${(800 + mgFromVials)}mg (${dose}mg)</strong></p>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
         function generateBID900Steps(dose, stepCounter) {
-            return `...`; // original content
+            return `
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-syringe" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter}: Activate MCBs for First Infusion</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Remove MCB no. 1 and MCB no. 2 from refrigeration and activate <span class="emphasis">immediately</span>.</p>
+                        <p>2. Press firmly on the <span class="emphasis">centre</span> portion of each bag (the solvent chamber) to apply uniform pressure.</p>
+                        <p>3. Activate with <span class="emphasis">vigorous mixing</span>.</p>
+                        ${createCalculationBox('Activated MCB no. 1 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 2 Calculations:', 400, 400, false)}
+                        <p><em>Upon activation, MCB is stable for 48 hours when stored at 2-8°C.</em></p>
+                        <p>4. Reconstitute 1 × 100mg vial with 10ml of sterile water for injection.</p>
+                        ${createCalculationBox('Reconstituted Vial Calculations:', 100, 10, false)}
+                        <p>5. Transfer 10ml (100mg) from the reconstituted vial to activated MCB no. 1.</p>
+                        ${createCalculationBox('First Infusion: MCB no. 1 (MCB with vial) Calculations:', 500, 410, true)}
+                        ${createCalculationBox('First Infusion: MCB no. 2 Calculations:', 400, 400, true)}
+                        <p><em>First infusion total: MCB no. 1 (500mg) + MCB no. 2 (400mg) = 900mg</em></p>
+                        <div class="warning-box">
+                            <p><strong>Stability Note:</strong> Mixed MCB with vial is stable for 24 hours when stored at 2-8°C.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-temperature-low" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter + 1}: Prepare and Store Second Infusion</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Remove MCB no. 3 and MCB no. 4 from refrigeration and activate <span class="emphasis">immediately</span>.</p>
+                        <p>2. Press firmly on the <span class="emphasis">centre</span> portion of each bag (the solvent chamber) to apply uniform pressure.</p>
+                        <p>3. Activate with <span class="emphasis">vigorous mixing</span>.</p>
+                        ${createCalculationBox('Activated MCB no. 3 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 4 Calculations:', 400, 400, false)}
+                        <p><em>Upon activation, MCB is stable for 48 hours when stored at 2-8°C.</em></p>
+                        <p>4. Reconstitute another 1 × 100mg vial with 10ml of sterile water for injection.</p>
+                        ${createCalculationBox('Reconstituted Vial Calculations:', 100, 10, false)}
+                        <p>5. Transfer 10ml (100mg) from the reconstituted vial to activated MCB no. 3.</p>
+                        <p>6. Store MCB no. 3 and MCB no. 4 at 2-8°C for the second infusion.</p>
+                        ${createCalculationBox('Second Infusion: MCB no. 3 (MCB with vial) Calculations:', 500, 410, true)}
+                        ${createCalculationBox('Second Infusion: MCB no. 4 Calculations:', 400, 400, true)}
+                        <p><em>Second infusion total: MCB no. 3 (500mg) + MCB no. 4 (400mg) = 900mg</em></p>
+                        <div class="warning-box">
+                            <p><strong>Stability Note:</strong> Mixed MCB with vial is stable for 24 hours when stored at 2-8°C.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
         function generateBID900_950Steps(dose, stepCounter) {
             const mgFromVials = dose - 800;
             const volumeFromVials = mgFromVials / 10;
-            return `...`; // original content
+            
+            return `
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-syringe" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter}: Activate MCBs and Prepare Vials</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Remove 4 MCBs from refrigeration and activate <span class="emphasis">immediately</span>.</p>
+                        <p>2. Press firmly on the <span class="emphasis">centre</span> portion of each bag (the solvent chamber) to apply uniform pressure.</p>
+                        <p>3. Activate with <span class="emphasis">vigorous mixing</span>.</p>
+                        ${createCalculationBox('Activated MCB no. 1 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 2 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 3 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 4 Calculations:', 400, 400, false)}
+                        <p><em>Upon activation, MCB is stable for 48 hours when stored at 2-8°C.</em></p>
+                        <p>4. Reconstitute 4 × 100mg vials with 40ml of sterile water for injection.</p>
+                        ${createCalculationBox('Reconstituted Vials Calculations:', 400, 40, false)}
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-cogs" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter + 1}: Prepare First Infusion</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Transfer ${volumeFromVials.toFixed(1)}ml (${mgFromVials}mg) from the reconstituted vials to activated MCB no. 1.</p>
+                        <p>2. Use MCB no. 1 (with added vial) together with MCB no. 2 for the first infusion.</p>
+                        ${createCalculationBox('First Infusion: MCB no. 1 (MCB with vial) Calculations:', (400 + mgFromVials), (400 + volumeFromVials).toFixed(1), true)}
+                        ${createCalculationBox('First Infusion: MCB no. 2 Calculations:', 400, 400, true)}
+                        <div class="warning-box">
+                            <p><strong>Total first infusion: ${(800 + mgFromVials)}mg (${dose}mg)</strong></p>
+                            <p><strong>Stability Note:</strong> Mixed MCB with vials is stable for 24 hours when stored at 2-8°C.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-temperature-low" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter + 2}: Prepare Second Infusion</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Transfer ${volumeFromVials.toFixed(1)}ml (${mgFromVials}mg) from the remaining reconstituted vials to activated MCB no. 3.</p>
+                        <p>2. Use MCB no. 3 (with added vial) together with MCB no. 4 for the second infusion.</p>
+                        <p>3. Store MCB no. 3 and MCB no. 4 at 2-8°C for the second infusion.</p>
+                        ${createCalculationBox('Second Infusion: MCB no. 3 (MCB with vial) Calculations:', (400 + mgFromVials), (400 + volumeFromVials).toFixed(1), true)}
+                        ${createCalculationBox('Second Infusion: MCB no. 4 Calculations:', 400, 400, true)}
+                        <div class="warning-box">
+                            <p><strong>Total second infusion: ${(800 + mgFromVials)}mg (${dose}mg)</strong></p>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
         function generateBID950Steps(dose, stepCounter) {
             const mgFromVials = 150; // 950 - 800 = 150
             const volumeFromVials = 15; // 150/10
-            return `...`; // original content
+            
+            return `
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-syringe" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter}: Activate MCBs and Prepare Vials</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Remove 4 MCBs from refrigeration and activate <span class="emphasis">immediately</span>.</p>
+                        <p>2. Press firmly on the <span class="emphasis">centre</span> portion of each bag (the solvent chamber) to apply uniform pressure.</p>
+                        <p>3. Activate with <span class="emphasis">vigorous mixing</span>.</p>
+                        ${createCalculationBox('Activated MCB no. 1 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 2 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 3 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 4 Calculations:', 400, 400, false)}
+                        <p><em>Upon activation, MCB is stable for 48 hours when stored at 2-8°C.</em></p>
+                        <p>4. Reconstitute 3 × 100mg vials with 30ml of sterile water for injection.</p>
+                        ${createCalculationBox('Reconstituted Vials Calculations:', 300, 30, false)}
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-cogs" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter + 1}: Prepare First Infusion</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Transfer ${volumeFromVials}ml (${mgFromVials}mg) from the reconstituted vials to activated MCB no. 1.</p>
+                        <p>2. Use MCB no. 1 (with added vial) together with MCB no. 2 for the first infusion.</p>
+                        ${createCalculationBox('First Infusion: MCB no. 1 (MCB with vial) Calculations:', (400 + mgFromVials), (400 + volumeFromVials), true)}
+                        ${createCalculationBox('First Infusion: MCB no. 2 Calculations:', 400, 400, true)}
+                        <div class="warning-box">
+                            <p><strong>Total first infusion: ${(800 + mgFromVials)}mg (${dose}mg)</strong></p>
+                            <p><strong>Stability Note:</strong> Mixed MCB with vials is stable for 24 hours when stored at 2-8°C.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-temperature-low" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter + 2}: Prepare Second Infusion</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Transfer ${volumeFromVials}ml (${mgFromVials}mg) from the remaining reconstituted vials to activated MCB no. 3.</p>
+                        <p>2. Use MCB no. 3 (with added vial) together with MCB no. 4 for the second infusion.</p>
+                        <p>3. Store MCB no. 3 and MCB no. 4 at 2-8°C for the second infusion.</p>
+                        ${createCalculationBox('Second Infusion: MCB no. 3 (MCB with vial) Calculations:', (400 + mgFromVials), (400 + volumeFromVials), true)}
+                        ${createCalculationBox('Second Infusion: MCB no. 4 Calculations:', 400, 400, true)}
+                        <div class="warning-box">
+                            <p><strong>Total second infusion: ${(800 + mgFromVials)}mg (${dose}mg)</strong></p>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
         function generateBID950_1000Steps(dose, stepCounter) {
             const mgFromVials = dose - 800;
             const volumeFromVials = mgFromVials / 10;
-            return `...`; // original content
+            
+            return `
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-syringe" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter}: Activate MCBs and Prepare Vials</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Remove 4 MCBs from refrigeration and activate <span class="emphasis">immediately</span>.</p>
+                        <p>2. Press firmly on the <span class="emphasis">centre</span> portion of each bag (the solvent chamber) to apply uniform pressure.</p>
+                        <p>3. Activate with <span class="emphasis">vigorous mixing</span>.</p>
+                        ${createCalculationBox('Activated MCB no. 1 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 2 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 3 Calculations:', 400, 400, false)}
+                        ${createCalculationBox('Activated MCB no. 4 Calculations:', 400, 400, false)}
+                        <p><em>Upon activation, MCB is stable for 48 hours when stored at 2-8°C.</em></p>
+                        <p>4. Reconstitute 4 × 100mg vials with 40ml of sterile water for injection.</p>
+                        ${createCalculationBox('Reconstituted Vials Calculations:', 400, 40, false)}
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-cogs" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter + 1}: Prepare First Infusion</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Transfer ${volumeFromVials.toFixed(1)}ml (${mgFromVials}mg) from the reconstituted vials to activated MCB no. 1.</p>
+                        <p>2. Use MCB no. 1 (with added vial) together with MCB no. 2 for the first infusion.</p>
+                        ${createCalculationBox('First Infusion: MCB no. 1 (MCB with vial) Calculations:', (400 + mgFromVials), (400 + volumeFromVials).toFixed(1), true)}
+                        ${createCalculationBox('First Infusion: MCB no. 2 Calculations:', 400, 400, true)}
+                        <div class="warning-box">
+                            <p><strong>Total first infusion: ${(800 + mgFromVials)}mg (${dose}mg)</strong></p>
+                            <p><strong>Stability Note:</strong> Mixed MCB with vials is stable for 24 hours when stored at 2-8°C.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <i class="fas fa-temperature-low" style="color: var(--accent-blue);"></i>
+                        <span>Step ${stepCounter + 2}: Prepare Second Infusion</span>
+                    </div>
+                    <div class="step-content">
+                        <p>1. Transfer ${volumeFromVials.toFixed(1)}ml (${mgFromVials}mg) from the remaining reconstituted vials to activated MCB no. 3.</p>
+                        <p>2. Use MCB no. 3 (with added vial) together with MCB no. 4 for the second infusion.</p>
+                        <p>3. Store MCB no. 3 and MCB no. 4 at 2-8°C for the second infusion.</p>
+                        ${createCalculationBox('Second Infusion: MCB no. 3 (MCB with vial) Calculations:', (400 + mgFromVials), (400 + volumeFromVials).toFixed(1), true)}
+                        ${createCalculationBox('Second Infusion: MCB no. 4 Calculations:', 400, 400, true)}
+                        <div class="warning-box">
+                            <p><strong>Total second infusion: ${(800 + mgFromVials)}mg (${dose}mg)</strong></p>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
         // Auto-calculate on input changes
@@ -1849,27 +2643,12 @@
                 }, 500);
             }
         });
-        // --- ORIGINAL CODE ENDS HERE ---
     </script>
 
-    <!-- ========== FIREBASE SCRIPT WITH YOUR CONFIG ========== -->
+    <!-- ========== NEW SCRIPT FOR LOGIN, STATS, RESET (adds functionality without altering original) ========== -->
     <script>
         (function() {
-            // --- YOUR ACTUAL FIREBASE CONFIGURATION ---
-            const firebaseConfig = {
-                apiKey: "AIzaSyDLcYWMNbWNkweLN5TJhF1ahVr3qgN9lDI",
-                authDomain: "tepadina-dose-prep-guide-sg.firebaseapp.com",
-                projectId: "tepadina-dose-prep-guide-sg",
-                storageBucket: "tepadina-dose-prep-guide-sg.firebasestorage.app",
-                messagingSenderId: "639536115921",
-                appId: "1:639536115921:web:01ff19ac754ab3d6d055f0",
-                measurementId: "G-4WEV6C2K3R"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            const db = firebase.firestore();
-
-            // Hardcoded valid users (local validation, same as before)
+            // List of all 15 users (login ID lowercase, password case-sensitive)
             const validUsers = {
                 'ab': 'Ab123',
                 'mgmt': 'Mgmt123',
@@ -1884,7 +2663,7 @@
                 'ncc': 'Ncc123',
                 'meh': 'Meh123',
                 'dyh': 'Dyh123',
-                'oncocare': 'Onco123',
+                'oncocare': 'Onco123',   // OncoCare -> oncocare
                 'cust': 'Cust123'
             };
 
@@ -1902,61 +2681,44 @@
             const testStatsDiv = document.getElementById('test-stats');
             const statsBody = document.getElementById('stats-body');
             const resetBtn = document.getElementById('reset-stats-btn');
-            const agreeBtn = document.getElementById('agree-button');
+            const agreeBtn = document.getElementById('agree-button'); // original agree
 
-            // Firestore helpers
-            async function updateLoginStats(username) {
-                const userRef = db.collection('loginStats').doc(username);
-                await db.runTransaction(async (transaction) => {
-                    const doc = await transaction.get(userRef);
-                    if (!doc.exists) {
-                        transaction.set(userRef, { count: 1, lastLogin: new Date().toISOString() });
-                    } else {
-                        const newCount = (doc.data().count || 0) + 1;
-                        transaction.update(userRef, { count: newCount, lastLogin: new Date().toISOString() });
-                    }
-                });
-            }
-
-            async function fetchStats() {
-                const snapshot = await db.collection('loginStats').get();
-                const stats = [];
-                snapshot.forEach(doc => {
-                    stats.push({
-                        username: doc.id,
-                        count: doc.data().count || 0,
-                        lastLogin: doc.data().lastLogin || null
-                    });
-                });
-                // Add users with zero logins if not present
+            // Initialize stats in localStorage
+            if (!localStorage.getItem('tepadinaLoginStats')) {
+                const initial = {};
                 for (let user in validUsers) {
-                    if (!stats.some(s => s.username === user)) {
-                        stats.push({ username: user, count: 0, lastLogin: null });
-                    }
+                    initial[user] = { count: 0, lastLogin: null };
                 }
-                stats.sort((a,b) => a.username.localeCompare(b.username));
-                return stats;
+                localStorage.setItem('tepadinaLoginStats', JSON.stringify(initial));
             }
 
-            async function displayStats() {
-                const stats = await fetchStats();
+            function updateLoginStats(username) {
+                const stats = JSON.parse(localStorage.getItem('tepadinaLoginStats'));
+                if (!stats[username]) stats[username] = { count: 0, lastLogin: null };
+                stats[username].count += 1;
+                stats[username].lastLogin = new Date().toLocaleString('en-SG', { hour12: false });
+                localStorage.setItem('tepadinaLoginStats', JSON.stringify(stats));
+            }
+
+            function displayStats() {
+                const stats = JSON.parse(localStorage.getItem('tepadinaLoginStats'));
                 let html = '';
-                stats.forEach(item => {
-                    html += `<tr><td>${item.username}</td><td>${item.count}</td><td>${item.lastLogin ? new Date(item.lastLogin).toLocaleString('en-SG', { hour12: false }) : 'Never'}</td></tr>`;
-                });
+                for (let user in stats) {
+                    html += `<tr><td>${user}</td><td>${stats[user].count}</td><td>${stats[user].lastLogin || 'Never'}</td></tr>`;
+                }
                 statsBody.innerHTML = html;
             }
 
-            async function showTestStats() {
+            function showTestStats() {
                 if (currentUser === 'test' || currentUser === 'mgmt') {
-                    await displayStats();
+                    displayStats();
                     testStatsDiv.style.display = 'block';
                 } else {
                     testStatsDiv.style.display = 'none';
                 }
             }
 
-            async function attemptLogin() {
+            function attemptLogin() {
                 const enteredId = loginIdInput.value.trim();
                 const enteredPw = passwordInput.value;
                 if (!enteredId || !enteredPw) {
@@ -1964,24 +2726,18 @@
                     return;
                 }
                 const lowerId = enteredId.toLowerCase();
-                if (!validUsers[lowerId] || validUsers[lowerId] !== enteredPw) {
+                const correctPw = validUsers[lowerId];
+                if (correctPw && correctPw === enteredPw) {
+                    currentUser = lowerId;
+                    updateLoginStats(lowerId);
+                    loginModal.style.display = 'none';
+                    disclaimerModal.style.display = 'flex'; // show original disclaimer
+                    loginError.textContent = '';
+                    loginIdInput.value = '';
+                    passwordInput.value = '';
+                } else {
                     loginError.textContent = 'Invalid Login ID or Password.';
-                    return;
                 }
-
-                try {
-                    await updateLoginStats(lowerId);
-                } catch (e) {
-                    console.error('Firestore error:', e);
-                    loginError.textContent = 'Server error, but login succeeded.';
-                }
-
-                currentUser = lowerId;
-                loginModal.style.display = 'none';
-                disclaimerModal.style.display = 'flex';
-                loginError.textContent = '';
-                loginIdInput.value = '';
-                passwordInput.value = '';
             }
 
             function logout() {
@@ -1993,26 +2749,22 @@
                 testStatsDiv.style.display = 'none';
             }
 
-            async function resetStats() {
+            function resetStats() {
                 if (currentUser !== 'test' && currentUser !== 'mgmt') return;
                 if (!confirm('Are you sure to reset counter? A PDF with current stats will be saved.')) return;
 
-                const stats = await fetchStats();
-                const lines = stats.map(s => `${s.username}: ${s.count} logins, last ${s.lastLogin || 'never'}`).join('\n');
+                const stats = JSON.parse(localStorage.getItem('tepadinaLoginStats'));
+                const lines = Object.entries(stats).map(([u, d]) => `${u}: ${d.count} logins, last ${d.lastLogin || 'never'}`).join('\n');
                 const printWin = window.open('', '_blank');
                 printWin.document.write(`<html><head><title>Login Stats before Reset</title></head><body><pre>${lines}</pre></body>`);
                 printWin.document.close();
                 printWin.focus();
                 printWin.print();
 
-                const batch = db.batch();
-                stats.forEach(s => {
-                    const ref = db.collection('loginStats').doc(s.username);
-                    batch.set(ref, { count: 0, lastLogin: null }, { merge: true });
-                });
-                await batch.commit();
-
-                await displayStats();
+                const reset = {};
+                for (let user in validUsers) reset[user] = { count: 0, lastLogin: null };
+                localStorage.setItem('tepadinaLoginStats', JSON.stringify(reset));
+                displayStats();
             }
 
             // Event listeners
@@ -2022,19 +2774,19 @@
             logoutButtons.forEach(btn => btn.addEventListener('click', logout));
             if (resetBtn) resetBtn.addEventListener('click', resetStats);
 
-            // Force login first
+            // On page load, show login first, hide disclaimer and main
             window.addEventListener('load', function() {
                 loginModal.style.display = 'flex';
                 disclaimerModal.style.display = 'none';
                 mainContainer.style.display = 'none';
+                // remove any auto-agree from localStorage to force login
                 localStorage.removeItem('tepadina-disclaimer-agreed');
             });
 
-            // After original agree button, show main and update stats
-            agreeBtn.addEventListener('click', async function() {
-                setTimeout(async () => {
-                    await showTestStats();
-                }, 100);
+            // After original agree button is clicked, show main and update stats visibility
+            agreeBtn.addEventListener('click', function() {
+                // mainContainer display is set by original code; we just update stats
+                setTimeout(showTestStats, 100);
             });
         })();
     </script>
